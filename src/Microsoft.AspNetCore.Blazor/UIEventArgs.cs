@@ -201,6 +201,36 @@ namespace Microsoft.AspNetCore.Blazor
     }
 
     /// <summary>
+    /// Specifies the location of the keyboard key or other input device
+    /// </summary>
+    public enum Locations
+    {
+        /// <summary>
+        /// Signifies that The key has only one version, or can't be distinguished between the left and right versions of the key,
+        /// and was not pressed on the numeric keypad or a key that is considered to be part of the keypad.
+        /// </summary>
+        Standard,
+
+        /// <summary>
+        /// Signifies that the key is the left-hand version of the key; 
+        /// This value is only used for keys that have more that one possible location on the keyboard.
+        /// </summary>
+        Left,
+
+        /// <summary>
+        /// Signifies that the key is the right-hand version of the key;
+        /// This value is only used for keys that have more that one possible location on the keyboard.
+        /// </summary>
+        Right,
+
+        /// <summary>
+        /// Signifies that the key is on the numeric keypad
+        /// or has a virtual key code that corresponds to the numeric keypad.
+        /// </summary>
+        Numpad
+    }
+
+    /// <summary>
     /// Supplies information about a keyboard event that is being raised.
     /// </summary>
     public class UIKeyboardEventArgs : UIEventArgs
@@ -222,7 +252,8 @@ namespace Microsoft.AspNetCore.Blazor
         /// <summary>
         /// The location of the key on the device.
         /// </summary>
-        public float Location { get; set; }
+        //public float Location { get; set; }
+        public Locations Location { get; set; }
 
         /// <summary>
         /// true if a key has been depressed long enough to trigger key repetition, otherwise false.
